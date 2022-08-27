@@ -21,7 +21,7 @@
   3. Select from the menu.
   4. Enter more Data.
   5. Exit.
-  6. HTML is created ands tored in ./dist/index.html and style.css
+  6. HTML is created and stored in ./dist/index.html and style.css
 ```
 <hr>
 <a href='https://l1keafox.github.io/myTeamSetting/'  target="_blank"> Click here for html example</a> 
@@ -56,7 +56,7 @@ We love your input! We want to make contributing to this project as easy and tra
    
   Test files are located in ./tests/ and created with Jest in mind.
 ``` js
-  jest ./tests/
+  $ jest ./tests/
   ```
   
 ## Questions
