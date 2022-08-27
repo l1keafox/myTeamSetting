@@ -135,14 +135,96 @@ inquire.prompt(internQuestions).then((answers) => {
 
 // WHEN I decide to finish building my team
 function createHTML(){
+// THEN I exit the application, and the HTML is generated
+
     console.log("EXIT APPLICATION");
     console.log("   Current Team: ",currentTeam);
-// THEN I exit the application, and the HTML is generated
+
+    const HTMLHead = 
+    `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+          crossorigin="anonymous"
+          />
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Permanent+Marker&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="style.css">
+        <title>My Team</title>
+    </head>
+    <body>
+        <header class ="bg-dark text-light text-center m-2"> <h1> my Team </h1> </header>
+        <div class = "container d-flex justify-content-center flex-wrap " id="teamContainer"> 
+    `;
+
+    const HTMLCard = 
+    `
+            <div class="card border border-1 p-1 m-2 shadow p-3 mb-5 bg-body rounded cardStyle" style="width: 18rem;">
+                <div class="card-body bg-info">
+                    <h5 class="card-title">Name</h5>
+                    <h6 class="card-text">Posistion</h6>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID:</li>
+                    <li class="list-group-item">Email:</li>
+                    <li class="list-group-item">Office #:</li>
+                </ul>
+            </div>    
+    `;
+
+    const HTMLFoot = 
+    `
+        </div>
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+          crossorigin="anonymous"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+    </body>
+    </html>    
+    `;
+
+    let HTML = '';
+
+    HTML += HTMLHead;
+
+
+    for(let member of currentTeam){
+
+        HTML += HTMLCard;
+        
+    }
+
+
+    HTML += HTMLFoot;
 // THEN an HTML file is generated that displays a nicely formatted team roster based on user input
 // WHEN I click on an email address in the HTML
 // THEN my default email program opens and populates the TO field of the email with the address
 // WHEN I click on the GitHub username
 // THEN that GitHub profile opens in a new tab
-}
 
-c
+    const fs = require("fs");
+    fs.writeFile("./dist/index.html", HTML, (err) => {
+        if (err) throw err;
+        console.log('The "data to append" was appended to file!');
+      });
+
+    fs.writeFile("./dist/style.css", `
+    *{
+        font-family: 'Permanent Marker', cursive;
+    }
+    `, (err) => {
+        if (err) throw err;
+        console.log('The "data to append" was appended to file!');
+    });    
+  }
+
+
