@@ -219,7 +219,7 @@ function createHTML(){
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">ID:${member.getId()}</li>
-                        <li class="list-group-item"> <a href="mailto: ${member.getEmail()}"> Email:${member.getEmail()} </a> </li>
+                        <li class="list-group-item"> <a href="mailto:${member.getEmail()}"> Email:${member.getEmail()} </a> </li>
                         <li class="list-group-item">${special} #:${special2}</li>
 
                     </ul>
