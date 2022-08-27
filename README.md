@@ -3,7 +3,7 @@
 
   [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-  A website that is generating a team by input from a command-line application.
+  Generating a website(HTML/CSS) after entering team information in command line prompts.
   
   
   ## Table of Contents 
