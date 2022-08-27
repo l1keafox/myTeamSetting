@@ -10,6 +10,6 @@ describe('Intern', () => {
         expect(Obj.getSchool()).toBe('DU');
     });
     it('gets Roles', () => {
-        expect(Obj.getRole()).toBe('Intern');
+        expect(Obj.getRole()).toBe('👶🏻 Intern');
     });
 });

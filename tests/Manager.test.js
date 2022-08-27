@@ -8,6 +8,6 @@ describe('Manager', () => {
     });
 
     it('gets Roles', () => {
-        expect(Obj.getRole()).toBe('Manager');
+        expect(Obj.getRole()).toBe('💼 Manager');
     });
 });

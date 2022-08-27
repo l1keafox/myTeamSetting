@@ -10,6 +10,6 @@ describe('Engineer', () => {
         expect(Obj.getGithub()).toEqual('ray.github.com');
     });
     it('gets Roles', () => {
-        expect(Obj.getRole()).toBe('Engineer');
+        expect(Obj.getRole()).toBe('👷 Engineer');
     });
 });
