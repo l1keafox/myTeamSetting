@@ -7,7 +7,7 @@ describe('Engineer', () => {
         expect(Obj).toEqual({"email": "ray@ray.com", "id": "123", "name": "ray"});
     });
     it('gets Github', () => {
-        expect(Obj.gitHub).toEqual('ray.github.com');
+        expect(Obj.getGithub()).toEqual('ray.github.com');
     });
     it('gets Roles', () => {
         expect(Obj.getRole()).toBe('Engineer');
