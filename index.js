@@ -108,8 +108,7 @@ let engineerQuestions = [
 function promptEngineer(){
 // THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
 inquire.prompt(engineerQuestions).then((answers) => {
-    console.log(answers);
-    addToTeam(new Engineer( ));
+    addToTeam(new Engineer(answers.name,answers.id,answers.email,answers.github));
     showMenu();
 });
 }
@@ -120,7 +119,7 @@ let internQuestions = [
     ... basicQuestions,
     {
         type: "input",
-        name: "github",
+        name: "school",
         message: "What is your school?",
         filter: (val) => val === "" ? "DU":val,
     },
@@ -128,8 +127,7 @@ let internQuestions = [
 function promptIntern(){
 // THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 inquire.prompt(internQuestions).then((answers) => {
-    console.log(answers);
-//    addToTeam();    
+    addToTeam(new Intern(answers.name,answers.id,answers.email,answers.school));
     showMenu();
 });
 
@@ -138,6 +136,7 @@ inquire.prompt(internQuestions).then((answers) => {
 // WHEN I decide to finish building my team
 function createHTML(){
     console.log("EXIT APPLICATION");
+    console.log("   Current Team: ",currentTeam);
 // THEN I exit the application, and the HTML is generated
 // THEN an HTML file is generated that displays a nicely formatted team roster based on user input
 // WHEN I click on an email address in the HTML
@@ -146,3 +145,4 @@ function createHTML(){
 // THEN that GitHub profile opens in a new tab
 }
 
+c
