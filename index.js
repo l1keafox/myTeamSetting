@@ -100,7 +100,7 @@ let engineerQuestions = [
         type: "input",
         name: "github",
         message: "What is your github account?",
-        filter: (val) => val === "" ? "Dr4yr4yU":val,
+        filter: (val) => val === "" ? "l1keafox":val,
     },
 
 ];
@@ -108,7 +108,7 @@ let engineerQuestions = [
 function promptEngineer(){
 // THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
 inquire.prompt(engineerQuestions).then((answers) => {
-    addToTeam(new Engineer(answers.name,answers.id,answers.email,answers.github));
+    addToTeam(new Engineer(answers.personName,answers.employeeID,answers.email,answers.github));
     showMenu();
 });
 }
@@ -127,7 +127,7 @@ let internQuestions = [
 function promptIntern(){
 // THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 inquire.prompt(internQuestions).then((answers) => {
-    addToTeam(new Intern(answers.name,answers.id,answers.email,answers.school));
+    addToTeam(new Intern(answers.personName,answers.employeeID,answers.email,answers.school));
     showMenu();
 });
 
@@ -138,7 +138,7 @@ function createHTML(){
 // THEN I exit the application, and the HTML is generated
 
     console.log("EXIT APPLICATION");
-    console.log("   Current Team: ",currentTeam);
+  //  console.log("   Current Team: ",currentTeam);
 
     const HTMLHead = 
     `
@@ -163,22 +163,6 @@ function createHTML(){
         <header class ="bg-dark text-light text-center m-2"> <h1> my Team </h1> </header>
         <div class = "container d-flex justify-content-center flex-wrap " id="teamContainer"> 
     `;
-
-    const HTMLCard = 
-    `
-            <div class="card border border-1 p-1 m-2 shadow p-3 mb-5 bg-body rounded cardStyle" style="width: 18rem;">
-                <div class="card-body bg-info">
-                    <h5 class="card-title">Name</h5>
-                    <h6 class="card-text">Posistion</h6>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID:</li>
-                    <li class="list-group-item">Email:</li>
-                    <li class="list-group-item">Office #:</li>
-                </ul>
-            </div>    
-    `;
-
     const HTMLFoot = 
     `
         </div>
@@ -193,23 +177,60 @@ function createHTML(){
     `;
 
     let HTML = '';
+// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
 
     HTML += HTMLHead;
 
 
     for(let member of currentTeam){
+        let OTHERDATA = 'stomething';
+        let special;
+        let special2;
+        let color;
+        switch(member.constructor.name){
+            case "Intern":
+                special = 'School';
+                special2 = member.getSchool();
+                color = "danger";
+            break;
 
+            case "Manager":
+                special = 'Office Number';
+                special2 = member.getOfficeNumber();
+                color = "primary";
+            break;
+
+            case "Engineer":
+                special = `<a href="https://github.com/${member.getGithub()}/" target="_blank" >Github`;
+                color = "info";
+                special2 = member.getGithub()+'</a>';
+            break;
+        }
+        const HTMLCard = 
+// WHEN I click on an email address in the HTML
+// THEN my default email program opens and populates the TO field of the email with the address
+// WHEN I click on the GitHub username
+// THEN that GitHub profile opens in a new tab
+`
+                <div class="card border border-1 p-1 m-2 shadow p-3 mb-5 bg-body  rounded cardStyle" style="width: 18rem;">
+                    <div class="card-body bg-${color}">
+                        <h5 class="card-title">${member.getName()}</h5>
+                        <h6 class="card-text">${member.getRole()}</h6>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">ID:${member.getId()}</li>
+                        <li class="list-group-item"> <a href="mailto: ${member.getEmail()}"> Email:${member.getEmail()} </a> </li>
+                        <li class="list-group-item">${special} #:${special2}</li>
+
+                    </ul>
+                </div>    
+        `;
         HTML += HTMLCard;
         
     }
 
 
     HTML += HTMLFoot;
-// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-// WHEN I click on an email address in the HTML
-// THEN my default email program opens and populates the TO field of the email with the address
-// WHEN I click on the GitHub username
-// THEN that GitHub profile opens in a new tab
 
     const fs = require("fs");
     fs.writeFile("./dist/index.html", HTML, (err) => {
