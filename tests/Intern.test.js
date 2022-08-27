@@ -7,7 +7,7 @@ describe('Intern', () => {
         expect(Obj).toEqual({"school": "ray@ray.com", "id": "123", "name": "ray","school": "DU"});
     });
     it('gets School', () => {
-        expect(Obj.getSchool().toBe('DU');
+        expect(Obj.getSchool).toBe('DU');
     });
     it('gets Roles', () => {
         expect(Obj.getRole()).toBe('Intern');
