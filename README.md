@@ -24,12 +24,16 @@
   6. HTML is created ands tored in ./dist/index.html and style.css
 ```
 <hr>
-<a href='https://l1keafox.github.io/myTeamSetting/'  target="_blank"> Click here for deployment </a> 
+<a href='https://l1keafox.github.io/myTeamSetting/'  target="_blank"> Click here for html example</a> 
+
+<hr>
+  
+![Website](/assets/images/readme.PNG)
+<hr>  
 
 
-  
-  ![Website](/assets/images/readme.PNG)
-  
+<a href="https://drive.google.com/file/d/1AayKqKzSWKTtpzPjDP1LOzFvYW4f1xoR/view">![Website](/assets/images/video.PNG) </a>
+
 
 ## Installation 
   1. Download/Clone Repo.
